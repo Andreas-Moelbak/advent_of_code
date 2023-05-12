@@ -1,6 +1,6 @@
 #!/bin/sh
 
-YEAR=2022
+YEAR=$2
 DAY=$1
 SESSION=$(cat session_cookie.txt)
 OUTFILE="day$DAY.input"

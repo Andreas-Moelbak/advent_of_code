@@ -16,7 +16,7 @@ func matchRulesPart1(s string) bool {
 	duplicate := false
 	contains := false
 	for i, char := range s {
-        switch {
+		switch {
 		case char == 'a':
 			vowel++
 		case char == 'e':
@@ -27,7 +27,7 @@ func matchRulesPart1(s string) bool {
 			vowel++
 		case char == 'u':
 			vowel++
-        }
+		}
 
 		if i > 0 && s[i] == s[i-1] {
 			duplicate = true
@@ -46,14 +46,42 @@ func matchRulesPart1(s string) bool {
 	}
 }
 
+func matchRulesPart2(s string) bool {
+    p, m := false, false
+	for i := range s {
+		if i >= 1 {
+			pair := string(s[i-1]) + string(s[i])
+			rest := string(s[i+1:])
+			if strings.Contains(rest, pair) {
+                p = true
+			}
+		}
+		if i >= 2 {
+			if s[i] == s[i-2] {
+                m = true
+			}
+		}
+	}
+	if p && m {
+		return true
+	} else {
+		return false
+    }
+}
+
 func main() {
 	data := readData()
 
-    sumPart1 := 0
-    for _, line := range data {
-        if matchRulesPart1(line) {
-            sumPart1++
-        }
+	sumPart1 := 0
+	sumPart2 := 0
+	for _, line := range data {
+		if matchRulesPart1(line) {
+			sumPart1++
+		}
+		if matchRulesPart2(line) {
+			sumPart2++
+		}
 	}
-    fmt.Println(sumPart1)
+	fmt.Println(sumPart1)
+	fmt.Println(sumPart2)
 }

@@ -54,10 +54,10 @@ func main() {
 
 	stringData = stripSlice(stringData)
 	forrest := generateForrest(stringData, 7)
-    sum := 1
-    for _, run := range runs  {
-	    result := traverseForrest(forrest, run)
-        sum *= result
-        fmt.Println(result, sum)
-    }
+	sum := 1
+	for _, run := range runs {
+		result := traverseForrest(forrest, run)
+		sum *= result
+		fmt.Println(result, sum)
+	}
 }
